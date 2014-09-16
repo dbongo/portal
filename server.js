@@ -5,14 +5,10 @@ var express = require('express'),
     fs = require('fs'),
     mongoose = require('mongoose');
 
-/**
- * Main application file
- */
-
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var config = require('./lib/config/config');
+var config = require('./config/config');
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Bootstrap models
@@ -24,14 +20,14 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 // Populate empty DB with sample data
-require('./lib/config/dummydata');
+require('./config/dummydata');
 
 // Passport Configuration
-var passport = require('./lib/config/passport');
+var passport = require('./config/passport');
 
 // Setup Express
 var app = express();
-require('./lib/config/express')(app);
+require('./config/express')(app);
 require('./lib/routes')(app);
 
 // Start server

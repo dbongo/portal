@@ -1,5 +1,5 @@
 {
-  "name": "gokerfullstack",
+  "name": "portal",
   "version": "0.0.0",
   "dependencies": {
     "body-parser": "^1.0.0",
@@ -18,5 +18,11 @@
     "passport": "^0.2.0",
     "passport-local": "^0.1.6",
     "serve-favicon": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4",
+    "supertest": "^0.13.0"
   }
 }

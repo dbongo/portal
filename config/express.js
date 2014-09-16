@@ -1,18 +1,18 @@
 'use strict';
 
 var express = require('express'),
-favicon = require('serve-favicon'),
-morgan = require('morgan'),
-compression = require('compression'),
-bodyParser = require('body-parser'),
-methodOverride = require('method-override'),
-cookieParser = require('cookie-parser'),
-session = require('express-session'),
-errorHandler = require('errorhandler'),
-path = require('path'),
-config = require('./config'),
-passport = require('passport'),
-mongoStore = require('connect-mongo')(session);
+    favicon = require('serve-favicon'),
+    morgan = require('morgan'),
+    compression = require('compression'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    errorHandler = require('errorhandler'),
+    path = require('path'),
+    config = require('./config'),
+    passport = require('passport'),
+    mongoStore = require('connect-mongo')(session);
 
 // Express configuration
 module.exports = function(app) {
@@ -20,6 +20,7 @@ module.exports = function(app) {
 
   if ('development' === env) {
     app.use(require('connect-livereload')());
+
     // Disable caching of scripts for easier testing
     app.use(function noCache(req, res, next) {
       if (req.url.indexOf('/scripts/') === 0) {
@@ -29,9 +30,9 @@ module.exports = function(app) {
       }
       next();
     });
-    app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'app')));
-    app.set('views', config.root + '/lib/views');
+
+    app.use(express.static(path.join(config.root, 'public')));
+    app.set('views', config.root + '/public/views');
   }
 
   if ('production' === env) {
